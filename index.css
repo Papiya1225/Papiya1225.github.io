@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 15px;
+  font-family: sans-serif;
+  font-style: italic;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+ul {
+  list-style: none; /* removes the dots beside list */
+}
+
+div {
+  border: 5px dotted rgba(210, 122, 90, 0.5);
+  margin: 0 auto; /*centers the container div as auto gets calculated automatically by the browser  */
+  position: relative;
+}
+
+li:nth-child(5) {
+  font-style: italic;
+}
+li:nth-child(even) {
+  text-transform: lowercase;
+}
+
+article p:first-child /*here if p element is the first child of the article element then it will apply the css*/ {
+  line-height: 1.5 /*1.5 of the font size*/;
+}
+
+a:link /*will select all the a element with link attribute */ {
+  color: aqua;
+  text-decoration: none; /*removes underline from the link*/
+}
+
+a:visited {
+  color: aqua;
+}
+
+a:hover {
+  color: orange;
+  text-decoration: underline dotted rgb(122, 233, 45); /* text-decoration shorthand = <text-decoration-line> <text-decoration-style> <Color>*/
+}
+
+a:active /* when link is clicked*/ {
+  background-color: purple !important;
+}
+
+button {
+  font-size: 15px;
+  padding: 10;
+  cursor: pointer;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+}
+
+/* sudoclasses are written with one colon(for example: a:link) whereas sudoelement are written with two colons (for example: h1::first-letter) */
+h1::first-letter {
+  background-color: red;
+}
+
+/* adjacent selector selects all the element just after the main element of the same parent */
+h1 + p {
+  /* here all the p element which are just after h1 element are selected ( must have common parent)*/
+
+  color: green;
+}
+
+p::first-line {
+  font-style: italic;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h2 {
+  position: relative;
+}
+/* ""after pseudoelement adds an element at the end of an element it's applied to, content is must */
+h2::after {
+  content: "TOP";
+  background-color: yellow;
+  display: inline-block; /* here making it inline so that we can apply padding to both vertical and horizontally, as inline only allows horizontal(left and right) */
+  padding: 10px;
+  position: absolute;
+  top: 0px; /*here 0 means right at the edge */
+  right: -25px; /* here negative means opposite of the edge */
+}
+
+h3 {
+  float: right; /* float makes the element out of flow, so parent element looses the height */
+  /* if all the child element is float then the parent element collapses it's height, to fix this, one way was to create empty div and clear the float  */
+}
+
+/* .emptydiv {
+  clear: both;
+} */
+
+/* Another way is clearfix hack which has been widely used by the css community */
+
+/* parentcontainer::after { //after pseudoelement adds and element after the parent container
+    clear: both;     // clearing the floats of the after child
+    content : ""     // after and before pseudoelement needs content
+    display: block   // pseudoelement are inline but we need block level element
+    } */
+
+/* let say we have 3 element, first element is float:left and second element is float:right then the first 2 elements will be horizontally aligned (mention width if block level) and the third element will also wrap around the float element, to fix this use clear:both to remove other elements float affect */
+
+/* inline elements respect float element, no overlap, while block level doesnot */
+
+/*float elements respect each other, no overlap  */
+
+/* h2::before does the same as h2::after but places the element before the main element  */
+
+/* Any pseudo element is an inline element not a block level element */
+
+/*  id and class can have same name*/
+
+/*PRIORITY !important > inline style > id > psudo-class > class > element > * 
+if there are mutiple class or pseudo-class, then the las written style can added.
+More complex selector get applied than the less one
+*/
+
+/* universal selector * applies to all element no matter what the style is (there is no inheritance involved) , where as body selector certain styles get inherited like color, font etc, there are many that doesnot get inherited */
+
+/* Collapsing margin is a phenonmen where only the bigger margin of two elements which are colliding get visible, both does not add up for example element a has margin-bottom = 50 and element b has margin-top of 20, and element a is top of element b then the space between them is 50, the greater one */
+
+/* Block level boxes or block element take all the spaces it can(100% width of the parent elemnet) while inline element take only the space required */
+
+/* height and width for line element does not apply, padding and margin only apply  horizontally(left and right) and inline elements doesn't cause line break */
